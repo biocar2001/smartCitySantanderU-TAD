@@ -22,15 +22,18 @@ detallada de los pasos a realizar en caso de querer reproducirlo en tu equipo o 
 
 SISTEMA BATCH
 =============
-1.
-2.
-3.
-4.
+	1.sscProcesoBatch - Ingesta de datos
+
+	2.BatchHiveProcess - Para tratar la info e insertarla en Mysql
+	
+	3.APIRestFlask - Api para recuperar la informacion
+	
+	4.DashBoardFlash - Dashboard para mostrar el comparador de fechas y temperaturas
 
 SISTEMA STREAMING
 =================
-1.
-2.
+	1.realtimescs - Lanzando el SimpleProducer y despues ejecutando la topologia.
+	2.APIRestFlask - Api para recuperar la informacion
 
 
 
