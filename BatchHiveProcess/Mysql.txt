@@ -1,0 +1,15 @@
+CREATE DATABASE scsantandersmart;
+CREATE TABLE temperatures_sensor (
+  id_sensor varchar(20) NOT NULL,
+  dia_medicion datetime NOT NULL,
+  temperatura float NOT NULL,
+  PRIMARY KEY (id_sensor,dia_medicion)
+);
+
+CREATE TABLE medias_sensor (
+  sensor varchar(500) NOT NULL,
+  dia_medicion date NOT NULL,
+  media_dia float NOT NULL,
+  medias_24 varchar(1000) NOT NULL,
+  PRIMARY KEY (sensor,dia_medicion)
+);
