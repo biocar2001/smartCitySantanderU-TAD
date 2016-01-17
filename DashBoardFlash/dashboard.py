@@ -7,6 +7,11 @@ def dashboard():
 	name= "CARLOS"
 	return render_template('dashboard.html', name=name)
 
+@app.route('/mapa')
+def mapa():
+	name= "CARLOS"
+	return render_template('mapa.html', name=name)
+	
 if __name__ == '__main__':
 	app.run(host='localhost', port=5031)
 	app.run(debug=True)
