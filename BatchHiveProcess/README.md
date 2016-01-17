@@ -26,11 +26,11 @@ Para probarlo deberemos realizar unas cuantas tareas previamente:
 wget http://www.congiu.net/hive-json-serde/1.3/cdh5/json-serde-1.3-jar-with-dependencies.jar
 
 4º Crear en hive el database y la tabla correspondiente:
-create database scsantander;
-use scsantander;
-Creo la tabla con los campos que tiene el json:
-=================================================
-CREATE TABLE scsSensoresTemp (
+- create database scsantander;
+- use scsantander;
+- Creo la tabla con los campos que tiene el json:
+
+- CREATE TABLE scsSensoresTemp (
  tags string,
  id string,
  requesttime string,
