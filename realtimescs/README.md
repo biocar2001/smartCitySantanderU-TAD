@@ -20,17 +20,23 @@ Para el testeo del mismo una vez descargado el proyecto, deberemos realizar los 
 2º Lanzar SimpleProducer.java, el cual cargara la informacion a tratar en kafka. En un entorno real prodriamos empaquetar esta clase en un jar y
 ejecutarlo cada 30 minutos con el cron de linux o herramientas como quartz en java.
 
-3º Arrancar cassandra en tu sistema: sudo cassandra -f
+3º Arrancar cassandra en tu sistema:
+
+sudo cassandra -f
 
 4º Crear el database de los sensores, ejecutando en cassandra el fichero databaseCreationSchema.cql
-	NOTA: Para el caso de querer guardar en redis, deberiamos instalar y arrancar REDIS.
+
+NOTA: Para el caso de querer guardar en redis, deberiamos instalar y arrancar REDIS.
 
 5º Bajar e instalar storm:
-	a) arrancar:
-	b) sudo ./storm nimbus
-	c) sudo ./storm supervisor
-	d) sudo ./storm ui
+
+arrancar:
+
+sudo ./storm nimbus
+sudo ./storm supervisor
+sudo ./storm ui
+
 6º Lanzar la topologia:
-	a) mvn clean
-	b) mvn install
-	c) mvn compile exec:java -Dexec.classpathScope=compile -Dexec.mainClass=smartcitysantander.realtime.SCSRealtimeTopology
+mvn clean
+mvn install
+mvn compile exec:java -Dexec.classpathScope=compile -Dexec.mainClass=smartcitysantander.realtime.SCSRealtimeTopology
