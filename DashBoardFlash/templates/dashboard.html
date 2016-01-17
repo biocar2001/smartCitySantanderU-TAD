@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>DashBoard Temperatura media por Hora</title>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script src="http://code.highcharts.com/highcharts.js"></script> 
+  
+
+
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css"></link>
+
+</head>
+<body>
+<div class="container-fluid">
+  	<h1>Comparador de Fechas Por Dia</h1>
+	<p>Date: <input type="text" id="datepicker"></p>
+</div>
+<div id="container" style="width: 1100px; height: 800px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+	var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container'
+        },
+        title: {
+	      text: 'Media horas diaria Temperatura'   
+	},
+	subtitle: {
+	      text: 'Smart City Santander'
+	},
+	xAxis: {
+	      categories: ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30',
+		 '03:00', '03:30', '04:30', '05:00', '05:30', '06:00','06:30', '07:00', '07:30', '08:00', '08:30', '09:00',
+		 '09:30', '10:00', '10:30', '11:00', '11:30', '12:00','12:30', '13:00', '13:30', '14:00', '14:30', '15:00',
+		 '15:30', '16:00', '16:30', '17:00', '17:30', '18:00','18:30', '19:00', '19:30', '20:00', '20:30', '21:00',
+		 '21:30', '22:00', '22:30', '23:00', '23:30']
+	   },
+	yAxis: {
+	      title: {
+		 text: 'Temperatura (\xB0C)'
+	      },
+	      plotLines: [{
+		 value: 0,
+		 width: 1,
+		 color: '#808080'
+	      }]
+	   },
+	tooltip: {
+	      valueSuffix: '\xB0C'
+	   },
+	legend: {
+	      layout: 'vertical',
+	      align: 'right',
+	      verticalAlign: 'middle',
+	      borderWidth: 0
+	   },
+       series:  [
+
+	   ]
+    });
+  
+
+   $( "#datepicker" ).datepicker({
+      dateFormat: "yy-mm-dd",
+      showOn: "button",
+      buttonImage: 'http://iconizer.net/files/PixeloPhilia/orig/date.png',
+      buttonImageOnly: true,
+      onSelect: function(dateText, inst) { 
+        $.getJSON("http://localhost:5030/MediasSensorFechaDia/"+dateText, function(json){
+		if(json.medias_24 == undefined) {
+			alert("No hay datos para esa fecha");
+			return;		
+		}           
+		var arrFloat = new Array();
+		json.medias_24.forEach(function(entry) {
+			var nuev = parseFloat(entry);    
+			arrFloat.push(nuev);
+		});
+
+	        chart.addSeries({
+		 name: json.dia_medicion+" - MEDIA "+json.media_dia,
+		 data: arrFloat
+	        });
+            
+        });
+      }
+    });
+});
+</script>
+</body>
+</html>
