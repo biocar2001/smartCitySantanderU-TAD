@@ -9,9 +9,9 @@ en la carpeta que correspondiese a la media hora y dia correspondiente.
 
 Para probarel proceso, al ser un proyecto maven bastaria con:
 
-mvn clean
-mvn install
+- mvn clean
+- mvn install
 
 y Ejecutar la clase principal bien desde el IDE o desde la consola:
 
-SCSIngestionProceso.scala
+- SCSIngestionProceso.scala
